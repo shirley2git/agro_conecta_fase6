@@ -16,22 +16,29 @@ const EloRural = () => {
   const markerDestinoRef = useRef(null);
   const routeLayerRef = useRef(null);
 
-  // Inicialização do Mapa
   useEffect(() => {
     if (!mapRef.current) {
+      // Inicializa o mapa com coordenadas de São Paulo
       const map = L.map('map-id').setView([-23.55, -46.63], 10);
       mapRef.current = map;
 
       L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        attribution: '© OpenStreetMap contributors'
+        attribution: '© OpenStreetMap'
       }).addTo(map);
 
+      // Ícone do caminhão
       const truckIcon = L.divIcon({ 
-        html: '<div style="font-size: 24px;">🚚</div>', 
-        className: 'main-truck' 
+        html: '<div class="truck-marker">🚚</div>', 
+        className: 'main-truck-container',
+        iconSize: [30, 30]
       });
       truckRef.current = L.marker([-23.55, -46.63], { icon: truckIcon }).addTo(map);
     }
+
+    // Corrige o bug do mapa não carregar as peças (tiles) corretamente
+    setTimeout(() => {
+      if (mapRef.current) mapRef.current.invalidateSize();
+    }, 400);
   }, []);
 
   const buscarLocalizacao = async (nome) => {
@@ -90,8 +97,8 @@ const EloRural = () => {
         truckRef.current.setLatLng(coords[i]);
       }
       setMinutos(Math.max(0, Math.floor(45 * (1 - i / coords.length))));
-      i += 2;
-    }, 50);
+      i += 1; // Velocidade da animação
+    }, 40);
   };
 
   return (
@@ -99,38 +106,40 @@ const EloRural = () => {
       <div className="app-frame-elo">
         <aside className="side-panel-elo">
           <div className="header-logo-elo">Elo<span>Rural</span></div>
+          
           <div className="card-elo">
-            <label className="input-label-elo">Partida</label>
+            <label className="input-label-elo">Ponto de Partida</label>
             <input 
               className="input-field-elo" 
-              placeholder="Ex: São Paulo"
+              placeholder="Cidade ou endereço"
               value={origemNome} 
               onChange={e => setOrigemNome(e.target.value)} 
             />
-            <label className="input-label-elo">Destino</label>
+            <label className="input-label-elo">Destino Final</label>
             <input 
               className="input-field-elo" 
-              placeholder="Ex: Santos"
+              placeholder="Cidade ou endereço"
               value={destinoNome} 
               onChange={e => setDestinoNome(e.target.value)} 
             />
             <button className="btn-main-elo" onClick={confirmarCarga} disabled={status !== "aguardando"}>
-              {status === "aguardando" ? "Confirmar Trajeto" : "Processando..."}
+              {status === "aguardando" ? "Rastrear Rota" : "Calculando..."}
             </button>
           </div>
 
           {status !== "aguardando" && status !== "carregando" && (
             <div className="card-elo animate-in">
-              <h3 style={{color: '#166534'}}>Custo Estimado: R$ {(sacas * 45) + 1200},00</h3>
+              <h3 style={{color: '#166534', margin: '0 0 10px'}}>Frete: R$ {(sacas * 45) + 1200},00</h3>
               <div className="eta-box-elo">
-                <p>Status da Carga:</p>
-                <h2>{status === "entregue" ? "✅ ENTREGUE" : `⏱️ ${minutos} min`}</h2>
+                <p style={{fontSize: '0.9rem', margin: '0'}}>Previsão de Chegada:</p>
+                <h2 style={{margin: '5px 0'}}>{status === "entregue" ? "✅ ENTREGUE" : `⏱️ ${minutos} min`}</h2>
               </div>
             </div>
           )}
         </aside>
+
         <main className="map-container-elo">
-          <div id="map-id" style={{ width: '100%', height: '500px', borderRadius: '15px', border: '2px solid #ddd' }}></div>
+          <div id="map-id"></div>
         </main>
       </div>
     </div>

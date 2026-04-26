@@ -1,63 +1,124 @@
-/* */
 .elo-rural-wrapper {
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
   --border: #e5e4e7;
-  --accent: #aa3bff; /* Roxo do Elo Rural */
+  --primary: #166534;
   --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px;
   
-  font-family: system-ui, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--text);
-  background: var(--bg);
-  text-align: left;
+  padding: 20px;
 }
 
-/* Estilos do Painel Lateral do Mapa */
 .app-frame-elo {
   display: flex;
   gap: 20px;
-  padding: 20px;
-  background: #f9f9f9;
-  border-radius: 15px;
-  border: 1px solid var(--border);
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  min-height: 550px;
 }
 
 .side-panel-elo {
-  width: 350px;
+  width: 320px;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
+.header-logo-elo {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.header-logo-elo span {
+  color: #84cc16;
+}
+
 .card-elo {
-  background: white;
+  background: #f8fafc;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+
+.input-label-elo {
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
 }
 
 .input-field-elo {
   width: 100%;
-  padding: 10px;
-  margin: 5px 0 15px;
-  border: 1px solid #ddd;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #cbd5e1;
   border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .btn-main-elo {
-  background: #166534;
+  background: var(--primary);
   color: white;
   border: none;
-  padding: 12px;
+  padding: 14px;
   border-radius: 8px;
   cursor: pointer;
   width: 100%;
   font-weight: bold;
+  transition: opacity 0.2s;
 }
 
-/* Estilo do Marcador de Caminhão no Mapa */
+.btn-main-elo:disabled {
+  opacity: 0.6;
+}
+
+/* O MAPA */
+.map-container-elo {
+  flex-grow: 1;
+  position: relative;
+  min-height: 500px;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+#map-id {
+  height: 550px !important; /* Altura fixa para garantir visibilidade */
+  width: 100%;
+  z-index: 1;
+}
+
 .truck-marker {
-  font-size: 24px;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animate-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ajuste Responsivo */
+@media (max-width: 850px) {
+  .app-frame-elo {
+    flex-direction: column;
+  }
+  .side-panel-elo {
+    width: 100%;
+  }
 }
