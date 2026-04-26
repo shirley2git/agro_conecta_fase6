@@ -2,7 +2,7 @@
   --primary: #166534;
   --bg-card: #f8fafc;
   --text-main: #334155;
-  font-family: sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 20px;
 }
 
@@ -13,7 +13,7 @@
   padding: 15px;
   border-radius: 18px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  min-height: 550px;
+  min-height: 600px;
 }
 
 .side-panel-elo {
@@ -59,41 +59,45 @@
   cursor: pointer;
 }
 
-/* Estilos do Perfil e Motorista */
-.driver-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 15px;
-}
-
-.driver-avatar {
-  font-size: 32px;
-  background: #e2e8f0;
-  padding: 5px;
-  border-radius: 50%;
-}
-
+/* Info do Motorista */
+.driver-info { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.driver-avatar { font-size: 32px; background: #e2e8f0; padding: 5px; border-radius: 50%; }
 .driver-info strong { display: block; color: #1e293b; }
 .driver-info span { font-size: 0.8rem; color: #64748b; }
 
-.payment-info {
-  border-top: 1px solid #e2e8f0;
-  padding-top: 12px;
-  font-size: 0.9rem;
-  color: var(--text-main);
-}
+.payment-info { border-top: 1px solid #e2e8f0; padding-top: 10px; font-size: 0.9rem; }
 
-.price-tag {
-  color: var(--primary);
+/* QR Code */
+.qr-container {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
   text-align: center;
-  margin: 15px 0 5px;
 }
+.qr-container p { font-size: 0.7rem; color: #64748b; margin-bottom: 5px; }
+.qr-code-img { width: 120px; height: 120px; border-radius: 4px; }
 
-/* Mapa e Marcadores */
-.map-container-elo { flex-grow: 1; height: 550px; border-radius: 15px; overflow: hidden; }
+.price-tag { color: var(--primary); text-align: center; margin: 15px 0 10px; font-size: 1.5rem; }
+
+/* Status Badge */
+.status-badge-container { display: flex; justify-content: center; }
+.status-badge {
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: white;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.status-badge.em_transito { background-color: #ca8a04; } /* Laranja escuro */
+.status-badge.entregue { background-color: #166534; } /* Verde escuro */
+
+/* Mapa */
+.map-container-elo { flex-grow: 1; height: 600px; border-radius: 15px; overflow: hidden; border: 1px solid #e2e8f0; }
 #map-id { height: 100% !important; width: 100%; z-index: 1; }
-
 .main-truck-container { background: transparent !important; border: none !important; }
 .truck-marker { font-size: 30px; display: flex; align-items: center; justify-content: center; }
 

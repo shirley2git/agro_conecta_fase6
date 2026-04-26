@@ -8,7 +8,7 @@ const EloRural = () => {
   const [destinoNome, setDestinoNome] = useState("");
   const [status, setStatus] = useState("aguardando");
   const [minutos, setMinutos] = useState(45);
-  const [sacas] = useState(10); // Valor fixo baseado no seu projeto
+  const [sacas] = useState(10); 
 
   const mapRef = useRef(null);
   const truckRef = useRef(null);
@@ -25,7 +25,6 @@ const EloRural = () => {
         attribution: '© OpenStreetMap'
       }).addTo(map);
 
-      // Ícone do caminhão sem fundo branco
       const truckIcon = L.divIcon({ 
         html: '<div class="truck-marker">🚚</div>', 
         className: 'main-truck-container',
@@ -57,7 +56,6 @@ const EloRural = () => {
       return;
     }
 
-    // Ícone circular para evitar o erro "Mark" (imagem quebrada)
     const dotIcon = L.divIcon({
       html: '<div style="background:#166534; width:12px; height:12px; border-radius:50%; border:2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.3);"></div>',
       className: 'custom-dot',
@@ -117,7 +115,6 @@ const EloRural = () => {
             </button>
           </div>
 
-          {/* Seção de Detalhes do Perfil e Pagamento */}
           {status !== "aguardando" && (
             <div className="card-elo animate-in">
               <div className="driver-info">
@@ -129,14 +126,26 @@ const EloRural = () => {
               </div>
               
               <div className="payment-info">
-                <p><strong>Pagamento:</strong> Pix (Pendente)</p>
+                <p><strong>Pagamento:</strong> Pix</p>
                 <p><strong>Caminhão:</strong> Graneleiro (Volvo FH)</p>
+              </div>
+
+              {/* Seção do QR Code */}
+              <div className="qr-container">
+                <p>Aguardando Pagamento:</p>
+                <img 
+                  src="https://i.imgur.com/vHq1vHq.png" 
+                  alt="QR Code Pix" 
+                  className="qr-code-img"
+                />
               </div>
 
               <h3 className="price-tag">R$ {(sacas * 45) + 1200},00</h3>
               
-              <div className="eta-box-elo">
-                <h2>{status === "entregue" ? "✅ ENTREGUE" : `⏱️ ${minutos} min`}</h2>
+              <div className="status-badge-container">
+                <div className={`status-badge ${status}`}>
+                  {status === "entregue" ? "✅ ENTREGUE" : `🚚 EM TRÂNSITO (${minutos} min)`}
+                </div>
               </div>
             </div>
           )}
