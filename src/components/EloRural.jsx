@@ -134,7 +134,7 @@ const EloRural = () => {
               <div className="qr-container">
                 <p>Aguardando Pagamento:</p>
                 <img 
-                  src="https://i.imgur.com/vHq1vHq.png" 
+                  src="https://i.imgur.com/x17oIoe.png" 
                   alt="QR Code Pix" 
                   className="qr-code-img"
                 />
