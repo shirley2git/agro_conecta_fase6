@@ -1,28 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './EloRural.css'; // CSS específico para este componente
-
-const EloRural = () => {
-  const [origemNome, setOrigemNome] = useState("");
-  const [destinoNome, setDestinoNome] = useState("");
-  const [tipoCaminhao, setTipoCaminhao] = useState("Especialista em Cargas Agrícolas");
-  const [metodoPagamento, setMetodoPagamento] = useState("Pix");
-  const [sacas, setSacas] = useState(10);
-  const [status, setStatus] = useState("aguardando");
-  const [minutos, setMinutos] = useState(45);
-  const [pago, setPago] = useState(false);
-  const [modalMotorista, setModalMotorista] = useState(false);
-
-  const mapRef = useRef(null);
-  const truckRef = useRef(null);
-  const markerOrigemRef = useRef(null);
-  const markerDestinoRef = useRef(null);
-  const routeLayerRef = useRef(null);
-
-  const motorista = { nome: "Ricardo Santos", nota: "4.9", viagens: "342" };
-
-  useEffect(() => {
-    if (window.L && !mapRef.current) {
-      const L = window.L;
+useEffect(() => {
+    if (!mapRef.current) {
       const map = L.map('map-id').setView([-23.55, -46.63], 10);
       mapRef.current = map;
 
@@ -44,9 +21,10 @@ const EloRural = () => {
   const confirmarCarga = async () => {
     if (!origemNome || !destinoNome) return alert("Preencha origem e destino!");
     setStatus("carregando");
-    const L = window.L;
+    
     const loc1 = await buscarLocalizacao(origemNome);
     const loc2 = await buscarLocalizacao(destinoNome);
+
 
     if (!loc1 || !loc2) {
       alert("Local não encontrado!");
