@@ -93,6 +93,5 @@ useEffect(() => {
       </div>
     </div>
   );
-};
 
 export default EloRural;
