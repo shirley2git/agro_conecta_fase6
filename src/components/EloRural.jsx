@@ -8,7 +8,7 @@ const EloRural = () => {
   const [destinoNome, setDestinoNome] = useState("");
   const [status, setStatus] = useState("aguardando");
   const [minutos, setMinutos] = useState(45);
-  const [sacas, setSacas] = useState(10);
+  const [sacas] = useState(10); // Valor fixo baseado no seu projeto
 
   const mapRef = useRef(null);
   const truckRef = useRef(null);
@@ -18,7 +18,6 @@ const EloRural = () => {
 
   useEffect(() => {
     if (!mapRef.current) {
-      // Inicializa o mapa com coordenadas de São Paulo
       const map = L.map('map-id').setView([-23.55, -46.63], 10);
       mapRef.current = map;
 
@@ -26,7 +25,7 @@ const EloRural = () => {
         attribution: '© OpenStreetMap'
       }).addTo(map);
 
-      // Ícone do caminhão
+      // Ícone do caminhão sem fundo branco
       const truckIcon = L.divIcon({ 
         html: '<div class="truck-marker">🚚</div>', 
         className: 'main-truck-container',
@@ -34,11 +33,7 @@ const EloRural = () => {
       });
       truckRef.current = L.marker([-23.55, -46.63], { icon: truckIcon }).addTo(map);
     }
-
-    // Corrige o bug do mapa não carregar as peças (tiles) corretamente
-    setTimeout(() => {
-      if (mapRef.current) mapRef.current.invalidateSize();
-    }, 400);
+    setTimeout(() => { if (mapRef.current) mapRef.current.invalidateSize(); }, 400);
   }, []);
 
   const buscarLocalizacao = async (nome) => {
@@ -62,11 +57,18 @@ const EloRural = () => {
       return;
     }
 
+    // Ícone circular para evitar o erro "Mark" (imagem quebrada)
+    const dotIcon = L.divIcon({
+      html: '<div style="background:#166534; width:12px; height:12px; border-radius:50%; border:2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.3);"></div>',
+      className: 'custom-dot',
+      iconSize: [12, 12]
+    });
+
     if (markerOrigemRef.current) mapRef.current.removeLayer(markerOrigemRef.current);
     if (markerDestinoRef.current) mapRef.current.removeLayer(markerDestinoRef.current);
     
-    markerOrigemRef.current = L.marker([loc1.lat, loc1.lon]).addTo(mapRef.current).bindPopup("Origem");
-    markerDestinoRef.current = L.marker([loc2.lat, loc2.lon]).addTo(mapRef.current).bindPopup("Destino");
+    markerOrigemRef.current = L.marker([loc1.lat, loc1.lon], { icon: dotIcon }).addTo(mapRef.current).bindPopup("Origem");
+    markerDestinoRef.current = L.marker([loc2.lat, loc2.lon], { icon: dotIcon }).addTo(mapRef.current).bindPopup("Destino");
 
     try {
       const resp = await fetch(`https://router.project-osrm.org/route/v1/driving/${loc1.lon},${loc1.lat};${loc2.lon},${loc2.lat}?overview=full&geometries=geojson`);
@@ -78,7 +80,7 @@ const EloRural = () => {
       mapRef.current.fitBounds(routeLayerRef.current.getBounds());
 
       iniciarViagem(coords);
-    } catch (error) {
+    } catch {
       alert("Erro ao traçar rota!");
       setStatus("aguardando");
     }
@@ -93,11 +95,9 @@ const EloRural = () => {
         setStatus("entregue");
         return;
       }
-      if (truckRef.current) {
-        truckRef.current.setLatLng(coords[i]);
-      }
+      if (truckRef.current) truckRef.current.setLatLng(coords[i]);
       setMinutos(Math.max(0, Math.floor(45 * (1 - i / coords.length))));
-      i += 1; // Velocidade da animação
+      i += 1;
     }, 40);
   };
 
@@ -108,31 +108,35 @@ const EloRural = () => {
           <div className="header-logo-elo">Elo<span>Rural</span></div>
           
           <div className="card-elo">
-            <label className="input-label-elo">Ponto de Partida</label>
-            <input 
-              className="input-field-elo" 
-              placeholder="Cidade ou endereço"
-              value={origemNome} 
-              onChange={e => setOrigemNome(e.target.value)} 
-            />
-            <label className="input-label-elo">Destino Final</label>
-            <input 
-              className="input-field-elo" 
-              placeholder="Cidade ou endereço"
-              value={destinoNome} 
-              onChange={e => setDestinoNome(e.target.value)} 
-            />
+            <label className="input-label-elo">Partida</label>
+            <input className="input-field-elo" value={origemNome} onChange={e => setOrigemNome(e.target.value)} placeholder="Cidade de origem"/>
+            <label className="input-label-elo">Destino</label>
+            <input className="input-field-elo" value={destinoNome} onChange={e => setDestinoNome(e.target.value)} placeholder="Cidade de destino"/>
             <button className="btn-main-elo" onClick={confirmarCarga} disabled={status !== "aguardando"}>
-              {status === "aguardando" ? "Rastrear Rota" : "Calculando..."}
+              {status === "aguardando" ? "Confirmar Trajeto" : "Rastreando..."}
             </button>
           </div>
 
-          {status !== "aguardando" && status !== "carregando" && (
+          {/* Seção de Detalhes do Perfil e Pagamento */}
+          {status !== "aguardando" && (
             <div className="card-elo animate-in">
-              <h3 style={{color: '#166534', margin: '0 0 10px'}}>Frete: R$ {(sacas * 45) + 1200},00</h3>
+              <div className="driver-info">
+                <div className="driver-avatar">👤</div>
+                <div>
+                  <strong>Ricardo Santos</strong>
+                  <span>⭐ 4.9 • 342 viagens</span>
+                </div>
+              </div>
+              
+              <div className="payment-info">
+                <p><strong>Pagamento:</strong> Pix (Pendente)</p>
+                <p><strong>Caminhão:</strong> Graneleiro (Volvo FH)</p>
+              </div>
+
+              <h3 className="price-tag">R$ {(sacas * 45) + 1200},00</h3>
+              
               <div className="eta-box-elo">
-                <p style={{fontSize: '0.9rem', margin: '0'}}>Previsão de Chegada:</p>
-                <h2 style={{margin: '5px 0'}}>{status === "entregue" ? "✅ ENTREGUE" : `⏱️ ${minutos} min`}</h2>
+                <h2>{status === "entregue" ? "✅ ENTREGUE" : `⏱️ ${minutos} min`}</h2>
               </div>
             </div>
           )}
