@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "palavra_chave": ["informações", "informacoes", "info", "informacao"],
+      "resposta": "Claro! Posso fornecer informações sobre nossos produtos, horários de atendimento e muito mais. O que você gostaria de saber?"
+    },
+    {
+      "id": 2,
+      "palavra_chave": ["produtos", "produto", "frutas", "legumes", "verduras"],
+      "resposta": "Nossos produtos incluem uma variedade de frutas, legumes e verduras frescas. Temos também opções orgânicas e produtos locais. Gostaria de saber mais sobre algum produto específico?"
+    },
+    {
+      "id": 3,
+      "palavra_chave": ["horário", "atendimento", "horario", "atendimentos", "horarios"],
+      "resposta": "Nosso horário de atendimento é de segunda a sexta-feira, das 8h às 18h, e aos sábados, das 8h às 14h. Estamos fechados aos domingos."
+    },
+    {
+      "id": 4,
+      "palavra_chave": ["ajuda", "suporte", "assistência", "assistencia"],
+      "resposta": "Se precisar de ajuda com algo mais, estou aqui para ajudar! Basta me perguntar."
+    },
+    {
+      "id": 5,
+      "palavra_chave": ["estação", "estacao", "meterológica", "meterologica", "clima"],
+      "resposta": "A estação meteorológica é um dispositivo que coleta dados sobre as condições climáticas, como temperatura, umidade, pressão atmosférica e velocidade do vento. Esses dados são essenciais para os agricultores, pois ajudam a tomar decisões informadas sobre o plantio, irrigação e colheita."
+    }
+  ]
+}

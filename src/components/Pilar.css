@@ -1,0 +1,17 @@
+.acessibilidade-pilares {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.pilar {
+    flex: 1;
+    text-align: center;
+    padding: 0 15px;
+}
+
+.pilar h5 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}

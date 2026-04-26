@@ -1,0 +1,21 @@
+.recurso-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    width: calc(50% - 15px); /* Ocupa metade da largura do container, menos o gap */
+    text-align: left;
+    min-height: 200px; /* Garante que os cards tenham altura mínima */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.recurso-icon {
+    font-size: 2.5em;
+    color: #e56d35; /* Cor Laranja/Coral para os ícones */
+    margin-bottom: 15px;
+}
+
+.recurso-card h3 {
+    font-size: 1.3em;
+    color: #424242;
+    margin-bottom: 10px;
+}

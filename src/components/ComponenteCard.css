@@ -1,0 +1,27 @@
+.componente-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: calc(50% - 10px); /* Ocupa metade da largura do container, menos o gap */
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.comp-icon {
+    font-size: 2em;
+    color: #a4c90e; /* Cor dos ícones: Verde */
+    margin-right: 15px;
+}
+
+.componente-card h4 {
+    font-size: 1.1em;
+    color: #424242;
+    margin-bottom: 5px;
+}
+
+.componente-card p {
+    font-size: 0.95em;
+    line-height: 1.4;
+}

@@ -1,0 +1,585 @@
+/* RESET E ESTILOS GLOBAIS BÁSICOS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- ESTILOS DO CABEÇALHO (NAVBAR) --- */
+.header {
+
+    background-color: rgba(142, 150, 48, 0.8);
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links ul li {
+    margin-left: 30px;
+}
+
+.nav-links ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1em;
+    padding-bottom: 5px;
+    transition: border-bottom 0.3s ease;
+}
+
+.nav-links ul li a:hover {
+    border-bottom: 2px solid #fff;
+}
+
+
+/* --- ESTILOS DA SEÇÃO HERO --- */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)),
+        url('./assets/agroBackground.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+}
+
+.hero-content {
+    max-width: 600px;
+    margin-left: 100px;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+}
+
+.hero-content h2 {
+    color: #a4c90e;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* --- ESTILOS DOS BOTÕES --- */
+
+.hero-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background-color: #a4c90e;
+    color: #000;
+}
+
+.btn-primary:hover {
+    background-color: #92b70d;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --- SEÇÃO O PROBLEMA --- */
+
+.problema-section {
+    background-color: #f7a262;
+    padding: 80px 0;
+    color: #444;
+    text-align: center;
+}
+
+.problema-header {
+    max-width: 800px;
+    margin: 0 auto 60px;
+}
+
+/* Ícone "O Desafio" */
+.badge-desafio {
+    display: inline-block;
+    background-color: #fff;
+    color: #e56d35;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border: 1px solid #e56d35;
+}
+
+.problema-header h2 {
+    font-size: 2.5em;
+    color: #424242;
+    margin-bottom: 20px;
+}
+
+.problema-description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* --- CAIXAS DE DESAFIOS (Cards) --- */
+.desafios-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+
+/* --- CAIXA PÚBLICO-ALVO --- */
+
+.publico-alvo-box {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.publico-alvo-box h3 {
+    text-align: center;
+    font-size: 1.8em;
+    color: #424242;
+    margin-bottom: 30px;
+}
+
+.alvo-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.alvo-left {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.alvo-left h4 {
+    color: #e56d35;
+    /* Cor do título: Laranja */
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.alvo-left ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.alvo-left ul li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 20px;
+}
+
+.alvo-left ul li::before {
+    content: "•";
+    /* Substitui o bullet point */
+    color: #79a63c;
+    /* Cor do bullet: Verde */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.alvo-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.persona-card {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    /* Borda sutil */
+    border-radius: 10px;
+    max-width: 300px;
+}
+
+.persona-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    /* Imagem redonda */
+    margin-bottom: 15px;
+}
+
+.persona-role {
+    color: #79a63c;
+    /* Cor verde para o papel */
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.persona-quote {
+    font-style: italic;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+/* --- SEÇÃO A SOLUÇÃO --- */
+.solucao-section {
+    /* Fundo Verde-Oliva da seção */
+    background-color: #a4c90e;
+    /* Cor principal de destaque (verde da navbar/botões) */
+    padding: 80px 0;
+    color: #444;
+    text-align: center;
+}
+
+.solucao-header {
+    max-width: 800px;
+    margin: 0 auto 60px;
+}
+
+.badge-solucao {
+    display: inline-block;
+    background-color: #fff;
+    color: #a4c90e;
+    /* Cor do texto do badge: verde */
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border: 1px solid #fff;
+}
+
+.solucao-header h2 {
+    font-size: 2.5em;
+    color: #424242;
+    margin-bottom: 20px;
+}
+
+.solucao-description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #f0f0f0;
+    /* Texto mais claro para o fundo escuro */
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- CARD PRINCIPAL: DONA ROSA --- */
+.dona-rosa-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto 60px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.rosa-image {
+    flex: 0 0 40%;
+    /* Ocupa 40% da largura do card */
+    padding-right: 30px;
+    text-align: center;
+}
+
+.rosa-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.rosa-content {
+    flex: 0 0 60%;
+    /* Ocupa 60% da largura do card */
+}
+
+.rosa-content h3 {
+    font-size: 2em;
+    color: #424242;
+    margin-bottom: 15px;
+}
+
+.rosa-content p {
+    margin-bottom: 20px;
+}
+
+.rosa-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.rosa-content ul li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 20px;
+    color: #666;
+}
+
+.rosa-content ul li::before {
+    content: "•";
+    color: #a4c90e;
+    /* Cor do bullet: Verde */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* --- CARDS DE COMPONENTES --- */
+.componentes-cards {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que os cards quebrem a linha */
+    justify-content: center;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --- SEÇÃO RECURSOS E BENEFÍCIOS --- */
+.recursos-section {
+    /* Fundo Amarelo Claro da seção */
+    background-color: #fce990;
+    /* Cor aproximada da imagem */
+    padding: 80px 0;
+    color: #444;
+    text-align: center;
+}
+
+.recursos-header {
+    max-width: 700px;
+    margin: 0 auto 60px;
+}
+
+.recursos-header h2 {
+    font-size: 2.5em;
+    color: #e56d35;
+    /* Cor Laranja/Coral do título */
+    margin-bottom: 20px;
+}
+
+.recursos-description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* --- CARDS DE RECURSOS (4 ITENS) --- */
+.recursos-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+/* --- BLOCO DE ACESSIBILIDADE --- */
+
+.acessibilidade-box {
+    background-color: #e56d35;
+    /* Fundo Laranja/Coral forte */
+    color: #fff;
+    border-radius: 10px;
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto 80px;
+    text-align: center;
+}
+
+.acessibilidade-box h4 {
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.acessibilidade-intro {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* --- BLOCO DE PARCERIAS ESTRATÉGICAS --- */
+
+.parcerias-bloco {
+    text-align: center;
+}
+
+.parcerias-bloco h3 {
+    font-size: 2em;
+    color: #a4c90e;
+    /* Cor Verde para o título de Parcerias */
+    margin-bottom: 40px;
+}
+
+.parcerias-list {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.parceria-item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.parceria-item h5 {
+    font-size: 1.1em;
+    color: #424242;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.parceria-item p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+
+
+
+
+/* --- RODAPÉ (FOOTER) --- */
+
+.footer {
+    background-color: #333;
+    /* Fundo Cinza Escuro/Preto */
+    color: #fff;
+    padding: 50px 0;
+    font-size: 0.9em;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    text-align: left;
+}
+
+.footer-col {
+    flex: 1;
+}
+
+.footer-logo {
+    /* Container para a imagem do logo */
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.logo-footer-img {
+    /* Estilo para a imagem real do logo dentro do footer */
+    height: 40px;
+    width: auto;
+}
+
+.footer-col h4 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #a4c90e;
+    /* Títulos em Verde */
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: #fff;
+}
+
+.footer-missao p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.missao-meta {
+    font-size: 0.8em;
+    font-style: italic;
+    margin-top: 15px;
+}

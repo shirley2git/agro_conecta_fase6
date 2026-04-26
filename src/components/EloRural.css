@@ -1,0 +1,63 @@
+/* */
+.elo-rural-wrapper {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --accent: #aa3bff; /* Roxo do Elo Rural */
+  --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px;
+  
+  font-family: system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  text-align: left;
+}
+
+/* Estilos do Painel Lateral do Mapa */
+.app-frame-elo {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 15px;
+  border: 1px solid var(--border);
+}
+
+.side-panel-elo {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card-elo {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.input-field-elo {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.btn-main-elo {
+  background: #166534;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+}
+
+/* Estilo do Marcador de Caminhão no Mapa */
+.truck-marker {
+  font-size: 24px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
